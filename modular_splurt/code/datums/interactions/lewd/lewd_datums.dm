@@ -533,6 +533,7 @@
 	interaction_sound = null
 	write_log_target = "Got armpit smothered by"
 	write_log_user = "Smothered in their armpit"
+	require_target_mouth = TRUE
 
 /datum/interaction/lewd/smother_armpit/display_interaction(mob/living/user, mob/living/target)
 	user.smother_armpit(target)
