@@ -72,6 +72,8 @@ GLOBAL_LIST_EMPTY(ash_storm_sounds)
 			var/thermal_protection = H.easy_thermal_protection()
 			if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT)
 				return TRUE
+		if(isdullahan(L))
+			return TRUE
 		if(isliving(L))// if we're a non immune mob inside an immune mob we have to reconsider if that mob is immune to protect ourselves
 			var/mob/living/the_mob = L
 			if("ash" in the_mob.weather_immunities)
