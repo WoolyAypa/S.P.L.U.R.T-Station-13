@@ -80,7 +80,8 @@ falloff_distance - Distance at which falloff begins. Sound is at peak volume (in
 
 		if(below_turf && istransparentturf(turf_source))
 			listeners += SSmobs.clients_by_zlevel[below_turf.z]
-
+	for(var/obj/item/dullahan_relay/relay in get_hearers_in_view(maxdistance, turf_source))
+		relay?.owner.playsound_local(get_turf(relay.owner), soundin, vol, vary, frequency, falloff_exponent, channel, pressure_affected, S, maxdistance, falloff_distance, 1, envwet, envdry)
 	for(var/P in listeners)
 		var/mob/M = P
 		if(get_dist(M, turf_source) <= maxdistance)
