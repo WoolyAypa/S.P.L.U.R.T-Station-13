@@ -1,5 +1,5 @@
 /datum/component/neckfire
-	var/mutable_appearance/neck_fire
+	var/mutable_appearance/neckfire_MA
 	
 	var/color
 
@@ -7,39 +7,43 @@
 
 	var/light = 1
 	var/is_glowing = FALSE
+	
+	var/plane = 19
 
 /datum/component/neckfire/Initialize(fire_color)
 	. = ..()
 	if(!isdullahan(parent))
 		return COMPONENT_INCOMPATIBLE
-	neck_fire = mutable_appearance('modular_splurt/icons/mob/dullahan_neckfire.dmi')
-	neck_fire.icon_state = "neckfire"
+	
+	neckfire_MA = mutable_appearance('modular_splurt/icons/mob/dullahan_neckfire.dmi')
+	neckfire_MA.icon_state = "neckfire"
 
-	src.color = "#[fire_color]"
+	color = "#[fire_color]"
 	lit(color)
 	RegisterSignal(parent, COMSIG_MOB_DEATH, .proc/unlit)
-	// RegisterSignal(parent, COMSIG_MOB_LIFE)
+
+/datum/component/neckfire/proc/setup_neckfireMA()
+	neckfire_MA.icon_state = "neckfire"
+	neckfire_MA.color = color
+	neckfire_MA.plane = plane // glowy i hope
 
 /datum/component/neckfire/proc/lit(fire_color)
 	var/mob/living/carbon/M = parent
 
-	if(!neck_fire || M.stat == DEAD)
+	if(!neckfire_MA || M.stat == DEAD)
 		return
 
 	unlit(M)
-
-	neck_fire.icon_state = "neckfire"
-	neck_fire.color = fire_color
-	neck_fire.plane = 19 // glowy i hope
+	setup_neckfireMA()
 
 	var/datum/action/neckfire/A = new /datum/action/neckfire(src)
 	A.Grant(M)
 
-	M.add_overlay(neck_fire)
+	M.add_overlay(neckfire_MA)
 
 /datum/component/neckfire/proc/unlit(mob/living/carbon/M)
 	if(M)
-		M.cut_overlay(neck_fire)
+		M.cut_overlay(neckfire_MA)
 	qdel(glowth)
 	is_glowing = FALSE
 
@@ -57,7 +61,7 @@
 /datum/action/neckfire/Trigger()
 	. = ..()
 	var/datum/component/neckfire/N = target
-	if(!N.neck_fire)
+	if(!N.neckfire_MA)
 		return
 	if(!N.is_glowing)
 		N.glowth = new(N.parent)
@@ -71,3 +75,4 @@
 	. = ..()
 	if(H.dna.features["neckfire"] && !istype(H, /mob/living/carbon/human/dummy))
 		H.AddComponent(/datum/component/neckfire, H.dna.features["neckfire_color"])
+	

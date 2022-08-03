@@ -63,6 +63,18 @@
 	ADD_TRAIT(user, TRAIT_FLOORED, ELEMENT_CRAWL_UNDER)
 	user.layer = source.layer - 0.01 //just a lil under it
 	user.pass_flags |= PASSCRAWL
+	if(ishuman(user) && isdullahan(user))
+		var/datum/component/neckfire/neckfire_component = user.GetComponent(/datum/component/neckfire)
+		if(neckfire_component)
+			var/mutable_appearance/MA = neckfire_component.neckfire_MA
+
+			user.cut_overlay(MA)
+
+			neckfire_component.plane = source.plane
+			neckfire_component.setup_neckfireMA()
+
+			user.add_overlay(MA)
+
 	step(user, get_dir(user, source))
 
 /datum/element/crawl_under/proc/uncrawl_from(obj/structure/source, atom/movable/movable)
@@ -80,6 +92,18 @@
 	REMOVE_TRAIT(movable, TRAIT_FLOORED, ELEMENT_CRAWL_UNDER)
 	movable.layer = initial(movable.layer)
 	movable.pass_flags &= ~PASSCRAWL
+
+	if(ishuman(movable) && isdullahan(movable))
+		var/datum/component/neckfire/neckfire_component = movable.GetComponent(/datum/component/neckfire)
+		if(neckfire_component)
+			var/mutable_appearance/MA = neckfire_component.neckfire_MA
+
+			movable.cut_overlay(MA)
+
+			neckfire_component.plane = initial(neckfire_component.plane)
+			neckfire_component.setup_neckfireMA()
+
+			movable.add_overlay(MA)
 
 /datum/element/crawl_under/proc/Affirm() //todo: move to /element and implement for /component ?
 	return TRUE
