@@ -25,6 +25,7 @@
 /datum/interaction/headpat
 	description = "Pat their head. Aww..."
 	require_user_hands = TRUE
+	require_target_mouth = TRUE // has_mouth() already checks if they have a head, not creating another proc, sorry!
 	simple_message = "USER headpats TARGET!"
 	needs_physical_contact = TRUE
 
