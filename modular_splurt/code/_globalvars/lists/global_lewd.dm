@@ -15,3 +15,18 @@ GLOBAL_LIST_INIT(breast_nouns, list("breasts", "boobs", "honkers", "tatas", "tid
 GLOBAL_LIST_INIT(balls_nouns, list("balls", "nuts", "ballsack", "testicles", "sack", "cum orbs", "cum spheres", "cum tanks", "cum holders", "cum churners", "spunk orbs", "spunk spheres", "spunk tanks", "spunk holders", "spunk churners", "nut orbs", "nut spheres", "nut tanks", "nut holders", "nut churners", "jizz orbs", "jizz spheres", "jizz tanks", "jizz holders", "jizz churners", "seed orbs", "seed spheres", "seed tanks", "seed holders", "seed churners"))
 
 GLOBAL_LIST_INIT(butt_nouns, list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump", "behind"))
+
+// Why not?
+GLOBAL_LIST_INIT(bj_noises, list(
+			'modular_sand/sound/interactions/bj1.ogg',
+			'modular_sand/sound/interactions/bj2.ogg',
+			'modular_sand/sound/interactions/bj3.ogg',
+			'modular_sand/sound/interactions/bj4.ogg',
+			'modular_sand/sound/interactions/bj5.ogg',
+			'modular_sand/sound/interactions/bj6.ogg',
+			'modular_sand/sound/interactions/bj7.ogg',
+			'modular_sand/sound/interactions/bj8.ogg',
+			'modular_sand/sound/interactions/bj9.ogg',
+			'modular_sand/sound/interactions/bj10.ogg',
+			'modular_sand/sound/interactions/bj11.ogg'
+			))
