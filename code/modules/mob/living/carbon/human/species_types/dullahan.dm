@@ -288,17 +288,18 @@
 	last_interacting_user = H
 
 /obj/item/bodypart/head/attack(mob/living/carbon/target, mob/user)
-	var/list/head_contents = src.GetAllContents()
-	var/obj/item/dullahan_relay/relay = locate() in head_contents
-	
-	var/mob/living/L = user
-	if(relay && L.a_intent == INTENT_HELP && L != relay.owner)
-		if(L.zone_selected == BODY_ZONE_PRECISE_MOUTH && COOLDOWN_FINISHED(L, last_interaction_time))
-			if(!target.has_mouth())
-				return
-			L.visible_message("<span class='lewd'>\The <b>[L]</b> kisses \the <b>[target]</b> deeply.</span>")
-			COOLDOWN_START(L, last_interaction_time, 0.6 SECONDS)
-		return
+	if(isdullahan(user))
+		var/list/head_contents = src.GetAllContents()
+		var/obj/item/dullahan_relay/relay = locate() in head_contents
+		
+		var/mob/living/L = user
+		if(relay && L.a_intent == INTENT_HELP && L != relay.owner)
+			if(L.zone_selected == BODY_ZONE_PRECISE_MOUTH && COOLDOWN_FINISHED(L, last_interaction_time))
+				if(!target.has_mouth())
+					return
+				L.visible_message("<span class='lewd'>\The <b>[L]</b> kisses \the <b>[target]</b> deeply.</span>")
+				COOLDOWN_START(L, last_interaction_time, 0.6 SECONDS)
+			return
 
 	..()
 
