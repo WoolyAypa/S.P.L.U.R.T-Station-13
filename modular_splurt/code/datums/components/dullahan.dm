@@ -75,4 +75,3 @@
 	. = ..()
 	if(H.dna.features["neckfire"] && !istype(H, /mob/living/carbon/human/dummy))
 		H.AddComponent(/datum/component/neckfire, H.dna.features["neckfire_color"])
-	
