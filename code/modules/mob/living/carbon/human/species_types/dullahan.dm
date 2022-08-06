@@ -317,6 +317,9 @@
 	head_accessory = null
 
 /obj/item/dullahan_relay/proc/on_mouse_dropped(datum/source, obj/item/I, mob/living/user)
+	if(!owner)
+		return
+
 	if(istype(I, /obj/item) && !head_accessory)
 		for(var/accessory in HEAD_ACCESSORIES_LIST)
 			if(istype(I, accessory))
@@ -334,6 +337,8 @@
 		return
 
 /obj/item/dullahan_relay/proc/on_mouse_drop(datum/source, atom/A, mob/living/user)
+	if(!owner)
+		return
 	if(head_accessory)
 		if(istype(A, /turf/open))
 			head_accessory.forceMove(A)
