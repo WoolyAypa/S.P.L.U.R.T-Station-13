@@ -5,7 +5,7 @@
 	icon_state = "slutbelt"
 	item_state = "security"
 
-obj/item/storage/belt/slut/ComponentInitialize()
+/obj/item/storage/belt/slut/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 5
@@ -38,3 +38,18 @@ obj/item/storage/belt/slut/ComponentInitialize()
 	icon_state = "cummerbund"
 	item_state = "cummerbund"
 
+/obj/item/storage/belt/headcarrier
+	name = "head carrier"
+	desc = "A practical way to carry your <i>(or someone's)</i> head around."
+	icon = 'modular_splurt/icons/obj/clothing/belts.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/belt.dmi'
+
+	icon_state = "headcarrier"
+	item_state = "headcarrier"
+
+/obj/item/storage/belt/headcarrier/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 1
+	STR.max_w_class = WEIGHT_CLASS_BULKY
+	STR.can_hold = typecacheof(list(/obj/item/bodypart/head))
