@@ -8,3 +8,4 @@
 	)
 	LAZYADD(products, extra_products)
 	. = ..()
+
