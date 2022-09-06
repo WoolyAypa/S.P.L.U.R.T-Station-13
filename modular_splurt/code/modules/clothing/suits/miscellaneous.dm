@@ -97,7 +97,7 @@
 	icon_state = "corpuss"
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	hoodtype = /obj/item/clothing/head/hooded/corpus/s //Enjoy this nice red outfit Nanotrasen! There is NO NEED for a pink one! xoxo -VivI Fanteriso
-	
+
 /obj/item/clothing/suit/hooded/corpus/s/Initialize(mapload)
 	. = ..()
 	allowed = GLOB.security_wintercoat_allowed
@@ -124,6 +124,15 @@
 /obj/item/clothing/head/hooded/corpus/c //command
 	icon_state = "corpusc"
 
+/obj/item/clothing/under/rank/civilian/janitor/maid/formal
+	name = "Formal maid uniform"
+	desc = "A cozy maid uniform for housekeeping."
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	fitted = NO_FEMALE_UNIFORM
+	icon_state = "maiddress"
+	item_state = "maiddress"
+
 // GWTB-inspired stuff wooo
 /obj/item/clothing/suit/goner
 	name = "trencher coat"
@@ -148,12 +157,17 @@
 
 /obj/item/clothing/suit/goner/fake/poly
 	name = "polychromic trencher coat"
-	desc = "A generic, grey trenchcoat with polychromatic spots."
+	desc = "A generic, drab olive trenchcoat with polychromatic spots."
 	var/list/poly_colors = list("#E6E6E6", "#D6D6D6", "#D6D6D6")
 
 /obj/item/clothing/suit/goner/fake/poly/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors, 3)
+
+/obj/item/clothing/suit/goner/fake/poly/classic
+	name = "classic trencher coat"
+	icon_state = "goner_suit_classic"
+	desc = "A generic, grey coat with polychromatic spots."
 
 /obj/item/clothing/suit/goner/red
 	name = "red trencher coat"

@@ -408,6 +408,19 @@
 	user.nextsoundemote = world.time + 60
 	playsound(user, 'modular_splurt/sound/voice/moonmen.ogg', 50, 0, 1)
 
+/datum/emote/living/blink2
+	key = "blink2"
+	key_third_person = "blinks2"
+	message = "blinks."
+
+/datum/emote/living/blink2/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/blink.ogg', 50, 1, -1)
+
 /datum/emote/living/laugh2
 	key = "laugh2"
 	key_third_person = "laughs2"
@@ -437,6 +450,36 @@
 		return
 	user.nextsoundemote = world.time + 70
 	playsound(user, 'modular_splurt/sound/voice/lol.ogg', 50, 1, -1)
+
+/datum/emote/living/laugh4
+	key = "laugh4"
+	key_third_person = "laughs4"
+	message = "burst out a laugh."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/laugh4/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/laugh_muta.ogg', 50, 1, -1)
+
+/datum/emote/living/laugh5
+	key = "laugh5"
+	key_third_person = "laughs5"
+	message = "laughs in Scottish."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/laugh5/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/laugh_deman.ogg', 50, 1, -1)
 
 /datum/emote/living/breakbad
 	key = "breakbad"
@@ -588,6 +631,51 @@
 	user.nextsoundemote = world.time + 10
 	playsound(user, 'modular_splurt/sound/voice/waterphone.ogg', 50, 1, -1)
 
+/datum/emote/living/weh2
+	key = "weh2"
+	key_third_person = "wehs2"
+	message = "let out a weh!"
+
+/datum/emote/living/weh2/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/weh2.ogg', 50, 1, -1)
+
+/datum/emote/living/weh3
+	key = "weh3"
+	key_third_person = "wehs3"
+	message = "let out a weh!"
+
+/datum/emote/living/weh3/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/weh3.ogg', 50, 1, -1)
+
+/datum/emote/living/weh4
+	key = "weh-s"
+	key_third_person = "wehs4"
+	message = "let out a surprised weh!"
+
+/datum/emote/living/weh4/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/weh_s.ogg', 50, 1, -1)
+
+/datum/emote/living/mlem
+	key = "mlem"
+	key_third_person = "mlems"
+	message = "sticks their tongue for a moment. Mlem!"
+	emote_type = EMOTE_VISIBLE
+
 /datum/emote/living/snore/snore2
 	key = "snore2"
 	key_third_person = "snores"
@@ -656,3 +744,41 @@
 		return
 	user.nextsoundemote = world.time + 1 SECONDS
 	playsound(user, 'modular_splurt/sound/voice/mewo.ogg', 50, 1, -1)
+
+/datum/emote/living/ara_ara
+	key = "ara"
+	key_third_person = "aras"
+	message = "seems sultrily surprised~"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	var/voicesound = 'modular_splurt/sound/voice/ara-ara.ogg'
+
+/datum/emote/living/ara_ara/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 1.5 SECONDS
+	playsound(user, voicesound, 50, 1, -1)
+
+/datum/emote/living/ara_ara/alt
+	key = "ara2"
+	voicesound = 'modular_splurt/sound/voice/ara-ara2.ogg'
+
+/datum/emote/living/missouri
+	key = "missouri"
+	key_third_person = "missouris"
+	message = "appears to believe %THEYRE in Missouri"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/missouri/run_emote(mob/user, params, type_override, intentional)
+	message = replacetextEx(message, "%THEYRE", user.p_theyre())
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 3 SECONDS
+	playsound(user, 'modular_splurt/sound/voice/missouri.ogg', 50, 0, -1)
